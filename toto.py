@@ -2,7 +2,7 @@
 # Name:        Parser RSS
 # Purpose:
 #
-# Author:      Julien M.
+# Author:      Guts
 #
 # Created:     05/07/2012
 #-------------------------------------------------------------------------------
@@ -23,7 +23,7 @@ import re
 
 def conn_BD():
     """paramètres connexion à la BD"""
-    conn = sqlite3.connect(r"D:\A_Ordenar\Julien\python\Flujitos\bd_test.sqlite")
+    conn = sqlite3.connect(r"\bd_test.sqlite")
     return conn
 
 def rss_extract(flux, periodico):
