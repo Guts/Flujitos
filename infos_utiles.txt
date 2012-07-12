@@ -1,0 +1,6 @@
+# Ce fichier contient des infos utiles pour le projet
+
+# Dans nltk le chemin des données est accessible et donc modifiabel avec :
+
+>>> nltk.data.path
+['/home/pierre/nltk_data', '/usr/share/nltk_data', '/usr/local/share/nltk_data', '/usr/lib/nltk_data', '/usr/local/lib/nltk_data']
