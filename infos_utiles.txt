@@ -4,3 +4,19 @@
 
 >>> nltk.data.path
 ['/home/pierre/nltk_data', '/usr/share/nltk_data', '/usr/local/share/nltk_data', '/usr/lib/nltk_data', '/usr/local/lib/nltk_data']
+
+
+
+# liste des tags nltk
+http://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html
+
+
+# Chapitre important , le n°4 Part-of-Speech Tagging
+
+Part-of-speech tagging is the process of converting a sentence, in the form of a list of
+words, into a list of tuples, where each tuple is of the form (word, tag). The tag is a
+part-of-speech tag and signifies whether the word is a noun, adjective, verb, and so on.
+
+All taggers in NLTK are in the nltk.tag package and inherit from the TaggerI base class.
+
+

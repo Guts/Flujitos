@@ -21,10 +21,10 @@ import re
 ###### Définition fonctions #######
 ###################################
 
-def conn_BD():
-    """paramètres connexion à la BD"""
-    conn = sqlite3.connect(r"\bd_test.sqlite")
-    return conn
+##def conn_BD():
+##    """paramètres connexion à la BD"""
+##    conn = sqlite3.connect(r"\bd_test.sqlite")
+##    return conn
 
 def rss_extract(flux, periodico):
     """remplit le dictionnaire avec les données du flux rss en entrée"""
