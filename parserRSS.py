@@ -1,3 +1,4 @@
+﻿#-*-coding: utf-8-*-
 #-------------------------------------------------------------------------------
 # Name:        Parser RSS
 # Purpose:
@@ -18,12 +19,12 @@ import sqlite3
 import re
 
 ###################################
-###### Définition fonctions #######
+###### DÃ©finition fonctions #######
 ###################################
 
 def conn_BD():
     """paramètres connexion à la BD"""
-    conn = sqlite3.connect(r"\bd_test.sqlite")
+    conn = sqlite3.connect(r"\bd_keywords_prensa.sqlite")
     return conn
 
 def rss_extract(flux, periodico):
@@ -65,7 +66,6 @@ dico_REP = {}
 ###################################
 
 rss_extract(flux_EC, 1)
-
 rss_extract(flux_REP, 2)
 
 
