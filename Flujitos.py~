@@ -200,7 +200,7 @@ for propre in lista_all_NNP:
 
 
 for mot in sorted(noms_coms.keys()):
-    # print mot
+    print mot
     # test s'il est déjà présent dans la BD
     arecup = (mot, )
     cur.execute('SELECT * FROM flujitos_glob WHERE mots=?', arecup)

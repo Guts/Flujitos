@@ -25,7 +25,6 @@ choisir :
 - spanish_grammars
 - tagsets
 - maxent_treebank_pos_tagger
-- punkt
 
 # Dans nltk le chemin des données est accessible et donc modifiable avec :
 
