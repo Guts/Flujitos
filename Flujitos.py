@@ -21,6 +21,8 @@ from datetime import datetime
 import nltk
 from nltk.corpus import stopwords
 
+from os import getcwd
+
 ###################################
 ###### Fonctions #######
 ###################################
@@ -147,7 +149,7 @@ scan_palabras(dico_EC)  # filtre avec nltk et renvoie 2 listes : noms propres / 
 
 
 
-conn = sqlite3.connect('/home/geotest/code/Flujitos/bd_keywords_prensa.sqlite')          # connexion BD
+conn = sqlite3.connect(r'C:\Documents and Settings\Utilisateur\Mes documents\GitHub\Flujitos\bd_keywords_prensa.sqlite')          # connexion BD
 cur = conn.cursor()                                          # curseur BD
 
 
