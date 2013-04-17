@@ -14,7 +14,6 @@
 ##### Import des librairies #######
 ###################################
 
-import os
 from feedparser import parse
 import sqlite3
 import re
@@ -80,7 +79,7 @@ def scan_palabras(dico):
         # Dans la boucle si dessous  je peux faire palabra.lower() mais je ne reconnaitrai plus les noms propres
         # A améliorer !
 
-        lista_stop_custom = ['uno', 'dos', 'tres','si']
+        lista_stop_custom = ['uno', 'dos', 'tres','si', 'http', 'img', 'br', 'amp', '<', '>', '%', 'border', 'border=', ]
 
         for palabra in lista_palabras:
             if palabra not in spanish_stops and palabra not in lista_stop_custom:
