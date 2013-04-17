@@ -40,7 +40,7 @@ def rss_extract(flux, periodico):
         return dico_EC, flux
 
     elif periodico == 2:
-        print u'Données La Republica'
+        print 'Données La Republica'
         # dico_REP['lastupd'] = flux.get('updated_parsed')
         for i in flux.entries:
             dico_REP[flux.entries.index(i)] = (i['published_parsed'],
@@ -50,7 +50,7 @@ def rss_extract(flux, periodico):
         return dico_REP, flux
 
     elif periodico == 3:
-        print u'Données New-York Times'
+        print 'Données New-York Times'
         # dico_NYT['lastupd'] = flux.get('updated_parsed')
         for i in flux.entries:
             dico_NYT[flux.entries.index(i)] = (i['published_parsed'],
@@ -120,11 +120,6 @@ def scan_palabras(dico):
 ###################################
 ####### Variables globales ########
 ###################################
-
-
-f = open('/home/geotest/code/youhou.txt', mode = 'a')
-f.write('youpi1\n')
-f.close()
 
 flux_EC = "http://elcomercio.feedsportal.com/rss/portada.xml"
 flux_REP = "http://www.larepublica.pe/rss/rss"
