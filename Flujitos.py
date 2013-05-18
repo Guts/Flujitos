@@ -13,15 +13,24 @@
 ###################################
 ##### Import des librairies #######
 ###################################
-
-from feedparser import parse
-import sqlite3
+# Standard library
+from os import getcwd, path, getcwd, chdir
 import re
 from datetime import datetime
+import pickle
+
+# 3rd party libraries
+from feedparser import parse
 import nltk
 from nltk.corpus import stopwords
+import sqlite3
 
-from os import getcwd
+# Custom modules
+
+
+
+
+
 
 ###################################
 ###### Fonctions #######
@@ -118,6 +127,19 @@ def scan_palabras(dico):
         for commun in lista_NN:
             lista_all_NN.append(commun)
 
+
+def note_last_date(date, nom):
+    """ dumps the last update of a feed into a file """
+    fic = "lastupdate_" + nom + ".txt"
+    with open(path.join("data", fic), "wb") as f:
+        pickle.dump(date, f)
+    # End fo function
+    return f, fic
+
+
+
+
+
 ###################################
 ####### Variables globales ########
 ###################################
@@ -147,9 +169,9 @@ rss_extract(flux_EC, 1) # extrait données du RSS
 ##scan_palabras(dico_NYT)
 scan_palabras(dico_EC)  # filtre avec nltk et renvoie 2 listes : noms propres / noms communs
 
+db =  path.join(getcwd(), 'data/bd_keywords_prensa.sqlite')
 
-
-conn = sqlite3.connect(r'C:\Documents and Settings\Utilisateur\Mes documents\GitHub\Flujitos\bd_keywords_prensa.sqlite')          # connexion BD
+conn = sqlite3.connect(db)          # connexion BD
 cur = conn.cursor()                                          # curseur BD
 
 
@@ -218,3 +240,11 @@ conn.commit()
 
 ##cur.close()
 ##conn.close()
+
+
+
+## Note the last update of RSS
+lastup_EC = parse(flux_EC).modified_parsed
+note_last_date(lastup_EC, "EC")
+lastup_REP = parse(flux_REP).modified_parsed
+note_last_date(lastup_EC, "REP")
