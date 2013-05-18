@@ -16,7 +16,7 @@
 ######## Libraries import #########
 ###################################
 # Standard library
-import datetime
+import time
 import pickle
 from os import path
 
@@ -31,13 +31,18 @@ from feedparser import parse
 ###################################
 
 class RssDateChecker:
-    """  """
+    """ Extracts and then compares date of the last item modified in a rss feed
+    with the date of the last execution of Flujitos """
     def __init__(self, flux, nom):
-        print 'initialized'
+        """ initialization function """
+        # extracting dates
         self.last_EC = self.extract_last_date(flux, nom)
         self.rss_EC = self.extract_rss_date(flux)
+        # comparing dates
+        self.compare_dates(self.last_EC, self.rss_EC)
 
     def extract_last_date(self, flux, nom):
+        """ Pick up the date of Flujitos last execution """
         fic = "lastupdate_" + nom + ".txt"
         with open(path.join("data", fic), "r") as f:
             last_date = pickle.load(f)
@@ -45,8 +50,22 @@ class RssDateChecker:
         return last_date
 
     def extract_rss_date(self, flux):
+        """ Pick up the date of the date of last modified item of the RSS feed """
         rss_date = parse(flux_EC).modified_parsed
+        # End of function
         return rss_date
+
+    def compare_dates(self, date_rss, date_lastupdate):
+        """ compare the two dates """
+        print date_lastupdate
+        print '/t', date_rss
+        if date_rss < date_lastupdate:
+            print "Flujitos needs to be executed"
+            return 1
+        else:
+            print "No new execution needed"
+            return 0
+
 
 
 
