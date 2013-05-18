@@ -39,6 +39,7 @@ class RssDateChecker:
         self.last_EC = self.extract_last_date(flux, nom)
         self.rss_EC = self.extract_rss_date(flux)
         # comparing dates
+        self.status = 0
         self.compare_dates(self.last_EC, self.rss_EC)
 
     def extract_last_date(self, flux, nom):
@@ -51,7 +52,7 @@ class RssDateChecker:
 
     def extract_rss_date(self, flux):
         """ Pick up the date of the date of last modified item of the RSS feed """
-        rss_date = parse(flux_EC).modified_parsed
+        rss_date = parse(flux).modified_parsed
         # End of function
         return rss_date
 
@@ -61,12 +62,12 @@ class RssDateChecker:
         print '/t', date_rss
         if date_rss < date_lastupdate:
             print "Flujitos needs to be executed"
-            return 1
+            self.status = 1
+            return self.status
         else:
             print "No new execution needed"
-            return 0
-
-
+            self.status = 0
+            return self.status
 
 
 ################################################################################
